@@ -52,6 +52,17 @@
   --duration: 160ms;
 }
 
+/* Dark palette, driven by the OS setting. Only colour tokens change. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #0e0e0f;
+    --color-text: #f2f2f2;
+    --color-muted: #9b9b9e;
+    --color-border: #2e2e31;
+    --color-surface: #1b1b1d;
+  }
+}
+
 @media (min-width: 48em) {
   :root {
     --gutter: var(--gutter-md);
