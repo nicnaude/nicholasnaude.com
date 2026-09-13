@@ -65,11 +65,22 @@
   margin-bottom: 0;
 }
 
+/* ---------- Icons ---------- */
+.icon {
+  width: var(--icon-size);
+  height: var(--icon-size);
+}
+
+.menu-toggle .icon {
+  --icon-size: 1.25rem;
+}
+
 /* ---------- Footer ---------- */
 .site-footer {
   padding-bottom: var(--space-6);
 }
 
+/* The whole band is one link: heading, arrow and the space between. */
 .contact-cta {
   display: flex;
   align-items: center;
@@ -78,26 +89,31 @@
   padding-block: var(--space-6);
   border-top: 1px solid var(--color-border);
   border-bottom: 1px solid var(--color-border);
+  color: var(--color-text);
+  text-decoration: none;
 }
 
 .contact-heading {
   font-size: var(--text-xl);
   font-weight: var(--weight-regular);
+  line-height: var(--leading-tight);
 }
 
-.contact-arrow {
+.contact-cta .icon {
+  --icon-size: var(--control-size);
   flex: none;
-  color: var(--color-text);
   transition: transform var(--duration) var(--ease);
 }
 
-.contact-arrow svg {
-  width: var(--control-size);
-  height: var(--control-size);
+.contact-cta:hover .icon,
+.contact-cta:focus-visible .icon {
+  transform: translateX(4px);
 }
 
-.contact-arrow:hover {
-  transform: translateX(4px);
+@media (prefers-reduced-motion: reduce) {
+  .contact-cta .icon {
+    transition: none;
+  }
 }
 
 .contact-links {

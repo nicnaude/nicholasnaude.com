@@ -42,6 +42,7 @@
   --gutter-md: 4rem;      /* 64 tablet */
   --edge-inset: 1.5rem;   /* menu button inset from viewport edge */
   --control-size: 3.5rem; /* 56 */
+  --icon-size: 1.5rem;    /* 24 default glyph box */
   --hero-ratio: 3 / 2;
   --hero-inset: 1rem;     /* 16 bleed inset below desktop */
   --radius-lg: 2.5rem;    /* 40 */
