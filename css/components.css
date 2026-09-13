@@ -27,7 +27,8 @@
 }
 
 .menu-toggle {
-  position: absolute;
+  position: fixed;
+  z-index: 10;
   top: var(--edge-inset);
   right: var(--edge-inset);
   width: var(--control-size);
@@ -37,6 +38,7 @@
   justify-content: center;
   border: 1px solid var(--color-border);
   border-radius: 50%;
+  background-color: var(--color-bg);
   cursor: pointer;
   transition: border-color var(--duration) var(--ease),
               background-color var(--duration) var(--ease);
@@ -46,12 +48,6 @@
   border-color: var(--color-text);
 }
 
-/* The button sits against the viewport edge, not the text column. */
-@media (min-width: 48em) {
-  .menu-toggle {
-    position: fixed;
-  }
-}
 
 /* ---------- Body copy ---------- */
 .intro-heading {
