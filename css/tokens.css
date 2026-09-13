@@ -40,6 +40,7 @@
 
   /* Layout */
   --content-max-width: 800px;
+  --avatar-size: 64px;
 
   /* Borders and shape */
   --radius-sm: 6px;

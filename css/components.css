@@ -44,6 +44,16 @@
   margin-bottom: 0;
 }
 
+/* Avatar ------------------------------------------------------------------ */
+.avatar {
+  width: var(--avatar-size);
+  height: var(--avatar-size);
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin-bottom: var(--space-md);
+}
+
 /* Buttons ------------------------------------------------------------------ */
 .btn {
   display: inline-block;
