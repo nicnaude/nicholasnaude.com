@@ -2,9 +2,10 @@
 :root {
   /* Colour */
   --color-bg: #ffffff;
-  --color-text: #111111;
-  --color-muted: #6b6b6b;
-  --color-border: #e5e5e5;
+  --color-text: #111111;       /* 18.9:1 on bg */
+  --color-muted: #565656;      /* 7.3:1  on bg, AAA for 13-14px text */
+  --color-border: #e5e5e5;     /* decorative rules only, carries no meaning */
+  --color-control: #8f8f8f;    /* 3.2:1  on bg, boundary of an interactive control */
   --color-surface: #f1f1f2;
 
   /* Type */
@@ -56,9 +57,10 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --color-bg: #0e0e0f;
-    --color-text: #f2f2f2;
-    --color-muted: #9b9b9e;
-    --color-border: #2e2e31;
+    --color-text: #f2f2f2;     /* 17.2:1 on bg */
+    --color-muted: #a3a3a6;    /* 7.6:1  on bg, AAA for 13-14px text */
+    --color-border: #2e2e31;   /* decorative rules only */
+    --color-control: #626266;  /* 3.3:1  on bg */
     --color-surface: #1b1b1d;
   }
 }

@@ -36,7 +36,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--color-control);
   border-radius: 50%;
   background-color: var(--color-bg);
   cursor: pointer;
@@ -128,7 +128,7 @@
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 4px;
-  text-decoration-color: var(--color-border);
+  text-decoration-color: var(--color-control);
   transition: text-decoration-color var(--duration) var(--ease);
 }
 
