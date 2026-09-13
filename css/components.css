@@ -141,6 +141,72 @@
 }
 
 
+/* ---------- Share ---------- */
+.share {
+  margin-top: var(--space-8); /* 64 below the last contact link */
+}
+
+.share-heading {
+  font-size: var(--text-base);
+  font-weight: var(--weight-bold);
+}
+
+.share-list {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  list-style: none;
+  margin-top: var(--space-2);
+  /* Pull back the first target's padding so the row optically aligns
+     with the text column above it. */
+  margin-inline-start: calc((var(--target-size) - var(--icon-size)) / -2);
+}
+
+.share-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--target-size);
+  height: var(--target-size);
+  color: var(--color-muted);
+  cursor: pointer;
+  transition: color var(--duration) var(--ease);
+}
+
+.share-link:hover,
+.share-link:focus-visible {
+  color: var(--color-text);
+}
+
+/* Brand marks live as files in assets/ and are masked, not drawn,
+   so they still inherit currentColor in both themes. */
+.icon-mask {
+  background-color: currentColor;
+  -webkit-mask-position: center;
+          mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+          mask-size: contain;
+}
+
+.icon-facebook {
+  -webkit-mask-image: url("../assets/facebook.svg");
+          mask-image: url("../assets/facebook.svg");
+}
+
+.icon-x {
+  -webkit-mask-image: url("../assets/x.svg");
+          mask-image: url("../assets/x.svg");
+}
+
+.share-status {
+  min-height: 1.25em;
+  margin-top: var(--space-1);
+  font-size: var(--text-xs);
+  color: var(--color-muted);
+}
+
 .copyright {
   margin-top: var(--space-8);
   font-size: var(--text-xs);
