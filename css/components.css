@@ -200,6 +200,19 @@
           mask-image: url("../assets/x.svg");
 }
 
+.icon-link {
+  -webkit-mask-image: url("../assets/link.svg");
+          mask-image: url("../assets/link.svg");
+}
+
+/* The Facebook file is the bare wordmark letterform on a tall, narrow
+   canvas. Held to 88% height so its cap height reads level with the
+   square glyphs beside it. */
+.icon-facebook {
+  -webkit-mask-size: auto 88%;
+          mask-size: auto 88%;
+}
+
 .share-status {
   min-height: 1.25em;
   margin-top: var(--space-1);
