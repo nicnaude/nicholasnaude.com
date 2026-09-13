@@ -1,9 +1,4 @@
-/* ==========================================================================
-   nicholasnaude.com - single stylesheet entry point
-   Load order matters: tokens, then base, then layout, then components.
-   Every page links only this file.
-   ========================================================================== */
-
+/* Entry point. Import order matters: tokens, base, layout, components. */
 @import url("tokens.css");
 @import url("base.css");
 @import url("layout.css");

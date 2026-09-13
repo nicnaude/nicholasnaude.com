@@ -1,54 +1,59 @@
-/* ==========================================================================
-   Design tokens
-   Change values here and they cascade across the whole site.
-   ========================================================================== */
-
+/* Design tokens. Edit colour, type, spacing and layout here only. */
 :root {
   /* Colour */
-  --color-bg: #f9f9f9;
-  --color-surface: #ffffff;
-  --color-text: #333333;
-  --color-heading: #111111;
-  --color-muted: #666666;
-  --color-muted-soft: #777777;
-  --color-link: #555555;
-  --color-link-hover: #000000;
-  --color-border: #eaeaea;
-  --color-accent: #000000;
-  --color-accent-hover: #333333;
-  --color-on-accent: #ffffff;
+  --color-bg: #ffffff;
+  --color-text: #111111;
+  --color-muted: #6b6b6b;
+  --color-border: #e5e5e5;
+  --color-surface: #f1f1f2;
 
-  /* Typography */
+  /* Type */
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  --font-size-sm: 0.85rem;
-  --font-size-nav: 0.95rem;
-  --font-size-base: 1rem;
-  --font-size-lg: 1.05rem;
-  --font-size-logo: 1.2rem;
-  --font-size-h1: 2rem;
-  --font-weight-medium: 500;
-  --font-weight-bold: 700;
-  --line-height-base: 1.5;
+
+  --text-xs: 0.8125rem;   /* 13px  copyright */
+  --text-sm: 0.875rem;    /* 14px  location */
+  --text-base: 1rem;      /* 16px  body, intro, links */
+  --text-lg: 1.5rem;      /* 24px  name, role */
+  --text-xl: 2.5rem;      /* 40px  contact heading */
+
+  --leading-tight: 1.25;
+  --leading-body: 1.5;
+
+  --weight-regular: 400;
+  --weight-bold: 700;
 
   /* Spacing */
-  --space-xs: 0.5rem;
-  --space-sm: 0.75rem;
-  --space-md: 1rem;
-  --space-lg: 1.5rem;
-  --space-xl: 2rem;
-  --gutter: 20px;
+  --space-1: 0.5rem;      /* 8  */
+  --space-2: 0.625rem;    /* 10 */
+  --space-3: 1rem;        /* 16 */
+  --space-4: 1.5rem;      /* 24 */
+  --space-5: 2rem;        /* 32 */
+  --space-6: 2.5rem;      /* 40 */
+  --space-7: 3.5rem;      /* 56 */
+  --space-8: 4rem;        /* 64 */
+  --space-9: 5.5rem;      /* 88 */
+  --space-10: 6rem;       /* 96 */
+  --space-11: 7.5rem;     /* 120 */
 
   /* Layout */
-  --content-max-width: 800px;
-  --avatar-size: 64px;
-
-  /* Borders and shape */
-  --radius-sm: 6px;
-  --border-hairline: 1px solid var(--color-border);
+  --measure: 700px;       /* text column */
+  --media-width: 1000px;  /* hero block at desktop */
+  --gutter: 1.5rem;       /* 24 mobile */
+  --gutter-md: 4rem;      /* 64 tablet */
+  --edge-inset: 1.5rem;   /* menu button inset from viewport edge */
+  --control-size: 3.5rem; /* 56 */
+  --hero-ratio: 3 / 2;
+  --hero-inset: 1rem;     /* 16 bleed inset below desktop */
+  --radius-lg: 2.5rem;    /* 40 */
 
   /* Motion */
-  --transition-fast: 0.2s ease;
+  --ease: cubic-bezier(0.2, 0, 0, 1);
+  --duration: 160ms;
+}
 
-  /* Depth */
-  --z-header: 100;
+@media (min-width: 48em) {
+  :root {
+    --gutter: var(--gutter-md);
+    --edge-inset: 2rem;
+  }
 }
