@@ -3,117 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Under Construction</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            color: #333;
-            background-color: #f9f9f9;
-        }
-        main {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            text-align: center;
-            max-width: 800px;
-            width: 100%;
-            margin: 0 auto;
-        }
-        h1 {
-            font-size: 2rem;
-            margin-bottom: 0.75rem;
-            color: #111;
-        }
-        p {
-            font-size: 1.05rem;
-            line-height: 1.5;
-            color: #666;
-            margin-bottom: 1.5rem;
-        }
-        .email-btn {
-            display: inline-block;
-            background-color: #000;
-            color: #fff;
-            padding: 12px 24px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 1rem;
-            transition: background-color 0.2s;
-        }
-        .email-btn:hover {
-            background-color: #333;
-        }
-    </style>
+    <title>Nicholas Naude</title>
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
 
     <div id="header-container"></div>
 
-    <main>
+    <main class="container">
         <h1>Under Construction</h1>
         <p>This site is currently being built. Check back soon for updates!</p>
-        <a href="mailto:nicnaude@gmail.com" class="email-btn">Email Me</a>
+        <a href="mailto:nicnaude@gmail.com" class="btn">Email Me</a>
     </main>
 
     <div id="footer-container"></div>
 
-    <script>
-        async function loadComponent(file, elementId) {
-            try {
-                const response = await fetch(file);
-                if (response.ok) {
-                    const html = await response.text();
-                    document.getElementById(elementId).innerHTML = html;
-                }
-            } catch (error) {
-                console.error("Error loading component:", error);
-            }
-        }
-
-        loadComponent('header.html', 'header-container');
-        loadComponent('footer.html', 'footer-container');
-    </script>
-</body>
-</html>    </style>
-</head>
-<body>
-
-    <div id="header-container"></div>
-
-    <main>
-        <h1>Welcome to My Mobile Site</h1>
-        <p>This content area scales perfectly across all mobile devices. The header and footer are loaded dynamically from separate HTML files.</p>
-    </main>
-
-    <div id="footer-container"></div>
-
-    <script>
-        async function loadComponent(file, elementId) {
-            try {
-                const response = await fetch(file);
-                if (response.ok) {
-                    const html = await response.text();
-                    document.getElementById(elementId).innerHTML = html;
-                }
-            } catch (error) {
-                console.error("Error loading component:", error);
-            }
-        }
-
-        loadComponent('header.html', 'header-container');
-        loadComponent('footer.html', 'footer-container');
-    </script>
+    <script src="js/main.js"></script>
 </body>
 </html>
