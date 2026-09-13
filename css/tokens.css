@@ -13,7 +13,7 @@
 
   --text-xs: 0.8125rem;   /* 13px  copyright */
   --text-sm: 0.875rem;    /* 14px  location */
-  --text-base: 1rem;      /* 16px  body, intro, links */
+  --text-base: 1.0625rem; /* 17px  body, intro, links (18px from 48em up) */
   --text-lg: 1.5rem;      /* 24px  name, role */
   --text-xl: 2.5rem;      /* 40px  contact heading */
 
@@ -67,6 +67,7 @@
 
 @media (min-width: 48em) {
   :root {
+    --text-base: 1.125rem; /* 18px */
     --gutter: var(--gutter-md);
     --edge-inset: 2rem;
   }
