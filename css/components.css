@@ -140,9 +140,6 @@
   text-decoration-style: solid;
 }
 
-.contact-links .spacer {
-  height: var(--space-2);
-}
 
 .copyright {
   margin-top: var(--space-8);
