@@ -46,7 +46,7 @@
   --icon-size: 1.5rem;    /* 24 default glyph box */
   --hero-ratio: 3 / 2;
   --hero-inset: 1rem;     /* 16 bleed inset below desktop */
-  --radius-lg: 2.5rem;    /* 40 */
+  --radius-lg: 1.875rem;  /* 30 */
 
   /* Motion */
   --ease: cubic-bezier(0.2, 0, 0, 1);
