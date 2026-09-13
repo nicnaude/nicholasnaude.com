@@ -125,15 +125,19 @@
 }
 
 .contact-links a {
-  text-decoration: underline;
+  font-size: var(--text-link);
+  /* Dotted has less ink than solid, so it is drawn at full text colour
+     to keep the link affordance above the 3:1 non-text contrast floor. */
+  text-decoration: underline dotted;
   text-decoration-thickness: 1px;
   text-underline-offset: 4px;
-  text-decoration-color: var(--color-control);
-  transition: text-decoration-color var(--duration) var(--ease);
+  text-decoration-color: currentColor;
+  transition: text-decoration-style var(--duration) var(--ease);
 }
 
-.contact-links a:hover {
-  text-decoration-color: currentColor;
+.contact-links a:hover,
+.contact-links a:focus-visible {
+  text-decoration-style: solid;
 }
 
 .contact-links .spacer {
