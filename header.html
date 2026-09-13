@@ -1,0 +1,44 @@
+<header class="site-header">
+    <div class="header-inner">
+        <a href="index.html" class="logo">SiteLogo</a>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </nav>
+    </div>
+</header>
+
+<style>
+    .site-header {
+        background: #ffffff;
+        border-bottom: 1px solid #eaeaea;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        width: 100%;
+    }
+    .header-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 15px 20px;
+    }
+    .logo {
+        font-weight: bold;
+        text-decoration: none;
+        color: #111;
+        font-size: 1.2rem;
+    }
+    .nav-links a {
+        margin-left: 15px;
+        text-decoration: none;
+        color: #555;
+        font-size: 0.95rem;
+    }
+    .nav-links a:hover {
+        color: #000;
+    }
+</style>
