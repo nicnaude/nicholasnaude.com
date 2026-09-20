@@ -87,10 +87,10 @@
 
 /* ---------- Footer ----------
    One rhythm down the block: a rule, 32, the heading, 32, the links, 64,
-   the copyright, 64. Inside the links it is 24 between rows and nothing
-   else. The copyright sits in 64 of clear space top and bottom. */
+   the copyright, 128. Inside the links it is 24 between rows and nothing
+   else. */
 .site-footer {
-  padding-bottom: var(--space-8); /* 64 below the copyright */
+  padding-bottom: calc(var(--space-8) * 2); /* 128 below the copyright */
 }
 
 /* The rule belongs to the block, so it sits on the heading and spans the
@@ -120,9 +120,9 @@
   display: flex;
   align-items: center;
   gap: var(--space-3);           /* 16 between glyph and label */
-  color: var(--color-title);     /* the glyph */
+  color: var(--color-link);      /* glyph and label together */
   text-decoration: none;
-  transition: color var(--duration) var(--ease);
+  transition: opacity var(--duration) var(--ease);
 }
 
 /* Glyphs are masked rather than drawn, so they take currentColor and follow
@@ -132,27 +132,29 @@
   flex: none;
 }
 
-/* The label sits at text colour and carries the affordance as a standing
-   dotted underline. Dotted lays down less ink than solid, so it is drawn at
-   full text colour to keep the line itself above the 3:1 non-text floor.
-   Hover and focus take the whole row to the link blue and close the dots
-   into a solid rule. */
+/* Glyph and label both sit at link colour from the start, so the rows read
+   as links before anyone touches them. The dotted underline stays dotted in
+   every state; dotted lays down less ink than solid, so it is drawn at full
+   link colour to keep the line itself above the 3:1 non-text floor. */
 .contact-label {
   font-size: var(--text-link);   /* 16 */
   text-decoration: underline dotted;
   text-decoration-thickness: 1px;
   text-underline-offset: 4px;
-  transition: color var(--duration) var(--ease);
 }
 
+/* Hover and focus dim the whole row rather than recolouring it. 0.85 is as
+   far as this can go: it lands at 6.9:1 light and 5.1:1 dark, and a heavier
+   dim drops the dark theme under the 4.5:1 floor for 16px text. */
 .contact-link:hover,
 .contact-link:focus-visible {
-  color: var(--color-link);
+  opacity: 0.85;
 }
 
-.contact-link:hover .contact-label,
-.contact-link:focus-visible .contact-label {
-  text-decoration-style: solid;
+@media (prefers-reduced-motion: reduce) {
+  .contact-link {
+    transition: none;
+  }
 }
 
 .icon-email {
