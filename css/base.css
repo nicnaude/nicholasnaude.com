@@ -14,6 +14,7 @@ html {
 
 body {
   font-family: var(--font-sans);
+  font-optical-sizing: auto;
   font-size: var(--text-base);
   line-height: var(--leading-body);
   color: var(--color-text);
