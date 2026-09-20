@@ -88,7 +88,7 @@
   --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, Helvetica, Arial, sans-serif;
 
-  --text-xs: 0.8125rem;   /* 13px  copyright */
+  --text-xs: 0.75rem;     /* 12px  copyright */
   --text-sm: 0.875rem;    /* 14px  location */
   --text-base: 1.0625rem; /* 17px  body, intro (18px from 48em up) */
   --text-link: 1rem;      /* 16px  footer contact links */

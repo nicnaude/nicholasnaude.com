@@ -85,40 +85,40 @@
   --icon-size: 1.25rem;
 }
 
-/* ---------- Footer ---------- */
+/* ---------- Footer ----------
+   One rhythm down the block: a rule, 32, the heading, 32, the links, 32,
+   the copyright. Inside the links it is 24 between rows and nothing else. */
 .site-footer {
   padding-bottom: var(--space-6);
 }
 
+/* The rule belongs to the block, so it sits on the heading and spans the
+   measure rather than the whole container. */
 .contact-heading {
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--space-5);   /* 32 */
   font-size: var(--text-xl);
   font-weight: var(--weight-regular);
   line-height: var(--leading-tight);
   color: var(--color-title);
 }
 
-/* The four contact rows sit in a ruled block, 32px clear above and below.
-   The block's own rule closes it at the top, each row closes itself at the
-   bottom, so the first and last rules are part of the block rather than
-   spacing between it and its neighbours. */
 .contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);           /* 24 between rows */
   list-style: none;
-  margin-block: var(--space-5); /* 32 */
-  border-top: 1px solid var(--color-border);
+  margin-block: var(--space-5);  /* 32 above and below */
 }
 
-.contact-list li {
-  border-bottom: 1px solid var(--color-border);
-}
-
-/* The whole row is the target, 80px tall and the full width of the measure,
-   well past the 44px minimum. */
+/* Block level, so the row box is exactly the 24px line and the 24px gap
+   between rows measures true, and so the target runs the full measure
+   rather than stopping at the end of the label. */
 .contact-link {
   display: flex;
   align-items: center;
-  gap: var(--space-4);          /* 24 between glyph and label */
-  padding-block: var(--space-4);
-  color: var(--color-title);    /* the glyph */
+  gap: var(--space-3);           /* 16 between glyph and label */
+  color: var(--color-title);     /* the glyph */
   text-decoration: none;
   transition: color var(--duration) var(--ease);
 }
@@ -126,7 +126,7 @@
 /* Glyphs are masked rather than drawn, so they take currentColor and follow
    the theme instead of staying black on a dark page. */
 .contact-link .icon {
-  --icon-size: var(--base-x4);  /* 32 */
+  --icon-size: var(--base-x2);   /* 16 */
   flex: none;
 }
 
@@ -134,7 +134,7 @@
    plus a standing underline. Both shift on hover, and the glyph comes with
    them so the row reads as one control. */
 .contact-label {
-  font-size: var(--text-base);
+  font-size: var(--text-link);   /* 16 */
   color: var(--color-accent);
   text-decoration: underline;
   text-decoration-thickness: 1px;
@@ -188,7 +188,7 @@
 }
 
 .copyright {
-  font-size: var(--text-xs);
+  font-size: var(--text-xs);     /* 12 */
   color: var(--color-muted);
   text-align: center;
 }
