@@ -77,6 +77,15 @@
   --color-visited: var(--type-light-visited);/* 8.4:1  on bg */
   --color-accent: var(--brand-accent);       /* 10.8:1 on bg */
 
+  /* One hue per contact channel. In light the hue fills the chip and the
+     glyph is drawn in ink; in dark the chip drops to the page surface and
+     the hue moves onto the glyph, so the colour survives the theme flip
+     instead of glowing. */
+  --hue-email: #ffe3cf;
+  --hue-phone: #fff1cf;
+  --hue-whatsapp: #cfffd2;
+  --hue-linkedin: #cff1ff;
+
   /* Frosted glass. The tint is the page background at partial opacity, so
      whatever passes under the control shows through it. */
   --glass-bg: rgb(255 255 255 / 60%);

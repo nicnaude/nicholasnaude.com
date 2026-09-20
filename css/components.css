@@ -119,23 +119,55 @@
 .contact-link {
   display: flex;
   align-items: center;
-  gap: var(--space-3);           /* 16 between glyph and label */
-  color: var(--color-link);      /* glyph and label together */
+  gap: var(--space-4);           /* 24 between chip and label */
+  color: var(--color-title);
   text-decoration: none;
-  transition: opacity var(--duration) var(--ease);
+  transition: color var(--duration) var(--ease);
 }
 
-/* Glyphs are masked rather than drawn, so they take currentColor and follow
-   the theme instead of staying black on a dark page. */
-.contact-link .icon {
-  --icon-size: calc(var(--base-x2) + var(--base-half)); /* 20 */
+.contact-link--email    { --hue: var(--hue-email); }
+.contact-link--phone    { --hue: var(--hue-phone); }
+.contact-link--whatsapp { --hue: var(--hue-whatsapp); }
+.contact-link--linkedin { --hue: var(--hue-linkedin); }
+
+/* The chip carries the background, the glyph inside carries the mask. They
+   have to be two elements: a mask clips an element's own background to the
+   glyph, so one element cannot be both. 48px also puts the row back over
+   the 44px touch target floor. */
+.contact-chip {
+  display: grid;
+  place-items: center;
   flex: none;
+  width: var(--base-x6);         /* 48 */
+  height: var(--base-x6);
+  border-radius: 50%;
+  /* Light: the hue fills the chip, the glyph is drawn in ink. The mapping
+     lives here rather than on :root because --hue is set on the row, and a
+     custom property only resolves where it is used. */
+  background-color: var(--hue);
+  color: #000000;
 }
 
-/* Glyph and label both sit at link colour from the start, so the rows read
-   as links before anyone touches them. The dotted underline stays dotted in
-   every state; dotted lays down less ink than solid, so it is drawn at full
-   link colour to keep the line itself above the 3:1 non-text floor. */
+/* Dark: the chip drops to the page surface and the hue moves onto the glyph,
+   so each channel keeps its colour instead of glowing as a pastel disc. */
+@media (prefers-color-scheme: dark) {
+  .contact-chip {
+    background-color: var(--color-surface);
+    color: var(--hue);
+  }
+}
+
+/* Glyphs are masked rather than drawn, so they take the chip's currentColor
+   and follow the theme instead of staying black on a dark page. */
+.contact-chip .icon {
+  --icon-size: calc(var(--base-x2) + var(--base-half)); /* 20 */
+}
+
+/* The label sits at text colour and carries the affordance as a standing
+   dotted underline. Dotted lays down less ink than solid, so it is drawn at
+   full text colour to keep the line itself above the 3:1 non-text floor.
+   Hover and focus take it to the link blue; the chip keeps its hue, since
+   that is identity rather than state. */
 .contact-label {
   font-size: var(--text-link);   /* 16 */
   text-decoration: underline dotted;
@@ -143,12 +175,9 @@
   text-underline-offset: 4px;
 }
 
-/* Hover and focus dim the whole row rather than recolouring it. 0.85 is as
-   far as this can go: it lands at 6.9:1 light and 5.1:1 dark, and a heavier
-   dim drops the dark theme under the 4.5:1 floor for 16px text. */
 .contact-link:hover,
 .contact-link:focus-visible {
-  opacity: 0.85;
+  color: var(--color-link);
 }
 
 @media (prefers-reduced-motion: reduce) {
