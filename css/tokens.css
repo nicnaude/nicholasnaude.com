@@ -111,17 +111,37 @@
   --space-10: calc(var(--base-x8) + var(--base-x4));  /* 96  */
   --space-11: calc(var(--base-x8) + var(--base-x7));  /* 120 */
 
+  /* Grid. Three states; tablet shares the mobile grid.
+       mobile   < 768px        4 columns, 16px margins,  8px gutters
+       tablet   768 to 1024px  4 columns, 16px margins,  8px gutters
+       desktop  1024px and up  12 columns, 24px margins, 24px gutters,
+                               container capped at 1200px
+     Every width on the page comes from these four values. Nothing is
+     placed on a number that is not a column span or a step of the scale. */
+  --bp-tablet: 48em;   /* 768px.  Reference only: custom properties cannot */
+  --bp-desktop: 64em;  /* 1024px. be used inside a media query condition.  */
+
+  --grid-columns: 4;
+  --grid-margin: var(--base-x2);   /* 16 */
+  --grid-gutter: var(--base-1);    /* 8  */
+  --container-max: 100%;
+  --measure-span: 4;               /* columns the text column occupies */
+
   /* Layout */
-  --measure: 700px;       /* text column */
-  --media-width: 1000px;  /* hero block at desktop */
-  --gutter: var(--base-x3);     /* 24 mobile */
-  --gutter-md: var(--base-x8);  /* 64 tablet */
-  --edge-inset: var(--base-x3); /* menu button inset from viewport edge */
+  --edge-inset: var(--grid-margin);
+  /* Distance from the viewport edge to the outer edge of the last column.
+     While the container is fluid that is just the outer margin; once it is
+     capped, the container is centred and the gap grows by half the overflow.
+     Resolved against the viewport, which is what a fixed element is placed
+     against, so 100% excludes the scrollbar where 100vw would not. */
+  --edge-inset-inline: max(
+    var(--grid-margin),
+    calc((100% - var(--container-max)) / 2 + var(--grid-margin))
+  );
   --control-size: var(--base-x7);  /* 56 */
   --icon-size: var(--base-x3);     /* 24 default glyph box */
   --target-size: 2.75rem;          /* 44 minimum touch target, WCAG floor */
   --hero-ratio: 3 / 2;
-  --hero-inset: var(--base-x2);    /* 16 bleed inset below desktop */
   --radius-lg: var(--radius-large);/* 32, was 30 */
 
   /* Motion */
@@ -147,10 +167,16 @@
   }
 }
 
-@media (min-width: 48em) {
+/* Desktop, 1024px up. The only layout breakpoint the foundation defines:
+   tablet and mobile share a grid, so nothing changes at 768px. */
+@media (min-width: 64em) {
   :root {
     --text-base: 1.125rem; /* 18px */
-    --gutter: var(--gutter-md);
-    --edge-inset: var(--base-x4); /* 32 */
+
+    --grid-columns: 12;
+    --grid-margin: var(--base-x3);  /* 24 */
+    --grid-gutter: var(--base-x3);  /* 24 */
+    --container-max: 1200px;
+    --measure-span: 8;              /* 760px inside a 1152px content box */
   }
 }

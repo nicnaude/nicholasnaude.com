@@ -30,7 +30,8 @@
   position: fixed;
   z-index: 10;
   top: var(--edge-inset);
-  right: var(--edge-inset);
+  /* Aligned to the outer edge of the last column at every breakpoint. */
+  right: var(--edge-inset-inline);
   width: var(--control-size);
   height: var(--control-size);
   display: flex;
