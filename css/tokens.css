@@ -120,7 +120,7 @@
   --space-11: calc(var(--base-x8) + var(--base-x7));  /* 120 */
 
   /* Grid. Three states.
-       mobile   < 768px        4 columns,  16px margins,  8px gutters
+       mobile   < 768px        4 columns,  24px margins,  8px gutters
        tablet   768 to 1024px  8 columns,  16px margins,  8px gutters
        desktop  1024px and up  12 columns, 24px margins, 24px gutters,
                                container capped at 1200px
@@ -134,7 +134,7 @@
   --bp-desktop: 64em;  /* 1024px. be used inside a media query condition.  */
 
   --grid-columns: 4;
-  --grid-margin: var(--base-x2);   /* 16 */
+  --grid-margin: var(--base-x3);   /* 24 */
   --grid-gutter: var(--base-1);    /* 8  */
   --container-max: 100%;
   --measure-start: 1;              /* first column of the text column */
@@ -191,6 +191,7 @@
     --text-base: 1.125rem; /* 18px */
 
     --grid-columns: 8;
+    --grid-margin: var(--base-x2);  /* 16 */
     --measure-start: 2;
     --measure-span: 6;              /* 550px at 768px, 741px at 1023px */
   }
