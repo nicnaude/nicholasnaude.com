@@ -86,18 +86,15 @@
 }
 
 /* ---------- Footer ----------
-   One rhythm down the block: a rule, 32, the heading, 32, the links, 64,
-   the copyright, 128. Inside the links it is 24 between rows and nothing
+   One rhythm down the block: 32, the heading, 32, the links, 64, the
+   copyright, 128. Inside the links it is 24 between rows and nothing
    else. */
 .site-footer {
   padding-bottom: calc(var(--space-8) * 2); /* 128 below the copyright */
 }
 
-/* The rule belongs to the block, so it sits on the heading and spans the
-   measure rather than the whole container. */
 .contact-heading {
-  border-top: 1px solid var(--color-border);
-  padding-top: var(--space-5);   /* 32 */
+  padding-top: var(--space-5);   /* 32, on top of the content wrapper's own */
   font-size: var(--text-xl);
   font-weight: var(--weight-regular);
   line-height: var(--leading-tight);
