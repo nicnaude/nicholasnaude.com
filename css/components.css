@@ -89,7 +89,7 @@
    One rhythm down the block: a rule, 32, the heading, 32, the links, 32,
    the copyright. Inside the links it is 24 between rows and nothing else. */
 .site-footer {
-  padding-bottom: var(--space-6);
+  padding-bottom: var(--space-8); /* 64 below the copyright */
 }
 
 /* The rule belongs to the block, so it sits on the heading and spans the
@@ -126,33 +126,31 @@
 /* Glyphs are masked rather than drawn, so they take currentColor and follow
    the theme instead of staying black on a dark page. */
 .contact-link .icon {
-  --icon-size: var(--base-x2);   /* 16 */
+  --icon-size: calc(var(--base-x2) + var(--base-half)); /* 20 */
   flex: none;
 }
 
-/* The label carries the link signal: a colour that is plainly not body text,
-   plus a standing underline. Both shift on hover, and the glyph comes with
-   them so the row reads as one control. */
+/* The label sits at text colour and carries the affordance as a standing
+   dotted underline. Dotted lays down less ink than solid, so it is drawn at
+   full text colour to keep the line itself above the 3:1 non-text floor.
+   Hover and focus take the whole row to the link blue and close the dots
+   into a solid rule. */
 .contact-label {
   font-size: var(--text-link);   /* 16 */
-  color: var(--color-accent);
-  text-decoration: underline;
+  text-decoration: underline dotted;
   text-decoration-thickness: 1px;
   text-underline-offset: 4px;
-  transition: color var(--duration) var(--ease),
-              text-decoration-thickness var(--duration) var(--ease);
+  transition: color var(--duration) var(--ease);
 }
 
 .contact-link:hover,
-.contact-link:focus-visible,
-.contact-link:hover .contact-label,
-.contact-link:focus-visible .contact-label {
+.contact-link:focus-visible {
   color: var(--color-link);
 }
 
 .contact-link:hover .contact-label,
 .contact-link:focus-visible .contact-label {
-  text-decoration-thickness: 2px;
+  text-decoration-style: solid;
 }
 
 .icon-email {
