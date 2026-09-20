@@ -38,16 +38,24 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid var(--color-control);
   border-radius: 50%;
-  background-color: var(--color-bg);
+  background-color: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
   cursor: pointer;
-  transition: border-color var(--duration) var(--ease),
-              background-color var(--duration) var(--ease);
+  transition: background-color var(--duration) var(--ease);
+}
+
+/* Without the blur the tint alone reads as a washed out disc, so fall back
+   to the opaque page background. */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .menu-toggle {
+    background-color: var(--color-bg);
+  }
 }
 
 .menu-toggle:hover {
-  border-color: var(--color-text);
+  background-color: var(--glass-bg-hover);
 }
 
 
