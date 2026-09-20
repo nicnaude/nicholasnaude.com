@@ -19,14 +19,12 @@
   grid-column: 1 / -1;
 }
 
-/* The text column is 8 of 12, centred, from the desktop breakpoint up.
-   Below it the grid is 4 columns wide and text fills all four. */
-@media (min-width: 64em) {
-  .site-header > *,
-  .content-wrapper > *,
-  .site-footer > * {
-    grid-column: 3 / span var(--measure-span);
-  }
+/* Text, header and footer take the centred measure: all 4 columns on
+   mobile, the middle 6 of 8 on tablet, the middle 8 of 12 on desktop. */
+.site-header > *,
+.content-wrapper > *,
+.site-footer > * {
+  grid-column: var(--measure-start) / span var(--measure-span);
 }
 
 /* Hero media spans the full grid at every width. */

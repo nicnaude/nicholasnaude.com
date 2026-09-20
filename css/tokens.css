@@ -118,13 +118,17 @@
   --space-10: calc(var(--base-x8) + var(--base-x4));  /* 96  */
   --space-11: calc(var(--base-x8) + var(--base-x7));  /* 120 */
 
-  /* Grid. Three states; tablet shares the mobile grid.
-       mobile   < 768px        4 columns, 16px margins,  8px gutters
-       tablet   768 to 1024px  4 columns, 16px margins,  8px gutters
+  /* Grid. Three states.
+       mobile   < 768px        4 columns,  16px margins,  8px gutters
+       tablet   768 to 1024px  8 columns,  16px margins,  8px gutters
        desktop  1024px and up  12 columns, 24px margins, 24px gutters,
                                container capped at 1200px
      Every width on the page comes from these four values. Nothing is
-     placed on a number that is not a column span or a step of the scale. */
+     placed on a number that is not a column span or a step of the scale.
+
+     Text and footer occupy --measure-span columns starting at
+     --measure-start: all 4 on mobile, the middle 6 of 8 on tablet, the
+     middle 8 of 12 on desktop. Media spans the full grid throughout. */
   --bp-tablet: 48em;   /* 768px.  Reference only: custom properties cannot */
   --bp-desktop: 64em;  /* 1024px. be used inside a media query condition.  */
 
@@ -132,6 +136,7 @@
   --grid-margin: var(--base-x2);   /* 16 */
   --grid-gutter: var(--base-1);    /* 8  */
   --container-max: 100%;
+  --measure-start: 1;              /* first column of the text column */
   --measure-span: 4;               /* columns the text column occupies */
 
   /* Layout */
@@ -145,7 +150,7 @@
     var(--grid-margin),
     calc((100% - var(--container-max)) / 2 + var(--grid-margin))
   );
-  --nav-inset: var(--base-x2); /* 16, pulled in from the last column edge */
+  --nav-inset: var(--base-1); /* 8, pulled in from the last column edge */
   --control-size: var(--base-x7);  /* 56 */
   --icon-size: var(--base-x3);     /* 24 default glyph box */
   --target-size: 2.75rem;          /* 44 minimum touch target, WCAG floor */
@@ -178,16 +183,26 @@
   }
 }
 
-/* Desktop, 1024px up. The only layout breakpoint the foundation defines:
-   tablet and mobile share a grid, so nothing changes at 768px. */
-@media (min-width: 64em) {
+/* Tablet, 768px up. Eight columns on the same 16px margin and 8px gutter
+   as mobile; text takes the middle six. */
+@media (min-width: 48em) {
   :root {
     --text-base: 1.125rem; /* 18px */
 
+    --grid-columns: 8;
+    --measure-start: 2;
+    --measure-span: 6;              /* 550px at 768px, 741px at 1023px */
+  }
+}
+
+/* Desktop, 1024px up. */
+@media (min-width: 64em) {
+  :root {
     --grid-columns: 12;
     --grid-margin: var(--base-x3);  /* 24 */
     --grid-gutter: var(--base-x3);  /* 24 */
     --container-max: 1200px;
+    --measure-start: 3;
     --measure-span: 8;              /* 760px inside a 1152px content box */
   }
 }
