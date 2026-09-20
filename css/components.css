@@ -86,8 +86,9 @@
 }
 
 /* ---------- Footer ----------
-   One rhythm down the block: a rule, 32, the heading, 32, the links, 32,
-   the copyright. Inside the links it is 24 between rows and nothing else. */
+   One rhythm down the block: a rule, 32, the heading, 32, the links, 64,
+   the copyright, 64. Inside the links it is 24 between rows and nothing
+   else. The copyright sits in 64 of clear space top and bottom. */
 .site-footer {
   padding-bottom: var(--space-8); /* 64 below the copyright */
 }
@@ -108,7 +109,8 @@
   flex-direction: column;
   gap: var(--space-4);           /* 24 between rows */
   list-style: none;
-  margin-block: var(--space-5);  /* 32 above and below */
+  margin-top: var(--space-5);    /* 32 below the heading */
+  margin-bottom: var(--space-8); /* 64 above the copyright */
 }
 
 /* Block level, so the row box is exactly the 24px line and the 24px gap
