@@ -30,8 +30,9 @@
   position: fixed;
   z-index: 10;
   top: var(--edge-inset);
-  /* Aligned to the outer edge of the last column at every breakpoint. */
-  right: var(--edge-inset-inline);
+  /* Tracks the outer edge of the last column at every breakpoint,
+     then sits --nav-inset inside it. */
+  right: calc(var(--edge-inset-inline) + var(--nav-inset));
   width: var(--control-size);
   height: var(--control-size);
   display: flex;

@@ -138,6 +138,7 @@
     var(--grid-margin),
     calc((100% - var(--container-max)) / 2 + var(--grid-margin))
   );
+  --nav-inset: var(--base-x2); /* 16, pulled in from the last column edge */
   --control-size: var(--base-x7);  /* 56 */
   --icon-size: var(--base-x3);     /* 24 default glyph box */
   --target-size: 2.75rem;          /* 44 minimum touch target, WCAG floor */
