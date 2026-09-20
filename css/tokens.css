@@ -6,14 +6,14 @@
    site-owned: the design system carries a light theme only. */
 
 /* ---------- Typeface ----------
-   Inter Tight, variable weight, SIL Open Font License 1.1 (assets/fonts/OFL.txt).
-   Stands in for SF Compact Display, which Apple's licence does not permit
-   embedding on the web. Same compact grotesque proportions, self-hostable. */
+   Liter, SIL Open Font License 1.1 (assets/fonts/liter-OFL.txt).
+   One weight, 400, no italic. Bold and italic are synthesized by the
+   browser; see --weight-bold below. */
 
 @font-face {
-  font-family: "Inter Tight";
-  src: url("../assets/fonts/inter-tight-latin-var.woff2") format("woff2-variations");
-  font-weight: 100 900;
+  font-family: "Liter";
+  src: url("../assets/fonts/liter-latin-400.woff2") format("woff2");
+  font-weight: 400;
   font-style: normal;
   font-display: swap;
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
@@ -22,9 +22,9 @@
 }
 
 @font-face {
-  font-family: "Inter Tight";
-  src: url("../assets/fonts/inter-tight-latin-ext-var.woff2") format("woff2-variations");
-  font-weight: 100 900;
+  font-family: "Liter";
+  src: url("../assets/fonts/liter-latin-ext-400.woff2") format("woff2");
+  font-weight: 400;
   font-style: normal;
   font-display: swap;
   unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
@@ -84,7 +84,7 @@
   --glass-saturate: 180%;
 
   /* Type */
-  --font-sans: "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI",
+  --font-sans: "Liter", -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, Helvetica, Arial, sans-serif;
 
   --text-xs: 0.8125rem;   /* 13px  copyright */
@@ -97,12 +97,10 @@
   --leading-tight: 1.25;
   --leading-body: 1.5;
 
-  --weight-light: 300;
+  /* Liter ships a single weight. 400 is the only real face; anything else
+     is synthesized by the browser. */
   --weight-regular: 400;
-  --weight-medium: 500;
   --weight-bold: 700;
-  --weight-heavy: 800;
-  --weight-black: 900;
 
   /* Spacing, mapped onto the 8px grid. --space-2 was 10px and is now 8px;
      --space-9/10/11 have no single token and are composed from the scale. */
