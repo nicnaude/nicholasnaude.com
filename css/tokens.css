@@ -1,15 +1,84 @@
-/* Design tokens. Edit colour, type, spacing and layout here only. */
+/* Design tokens. Edit colour, type, spacing and layout here only.
+
+   The primitive layer below is the design system, name for name. The
+   semantic layer maps it onto the names the stylesheets already use, so
+   selectors in base/layout/components stay untouched. Dark values are
+   site-owned: the design system carries a light theme only. */
+
+/* ---------- Typeface ----------
+   Inter Tight, variable weight, SIL Open Font License 1.1 (assets/fonts/OFL.txt).
+   Stands in for SF Compact Display, which Apple's licence does not permit
+   embedding on the web. Same compact grotesque proportions, self-hostable. */
+
+@font-face {
+  font-family: "Inter Tight";
+  src: url("../assets/fonts/inter-tight-latin-var.woff2") format("woff2-variations");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Inter Tight";
+  src: url("../assets/fonts/inter-tight-latin-ext-var.woff2") format("woff2-variations");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+    U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+    U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* ---------- Primitives: the design system, verbatim ---------- */
 :root {
-  /* Colour */
+  /* Colour (light theme) */
+  --brand-accent: #193788;
+  --type-light-titles: #000000;
+  --type-light-body: #3d3d3d;
+  --type-light-link: #0013ff;
+  --type-light-visited: #7c00b4;
+
+  /* Spacing, 8px grid */
+  --base-half: 4px;
+  --base-1: 8px;
+  --base-x2: 16px;
+  --base-x3: 24px;
+  --base-x4: 32px;
+  --base-x5: 40px;
+  --base-x6: 48px;
+  --base-x7: 56px;
+  --base-x8: 64px;
+
+  /* Radius */
+  --radius-extra-small: 4px;
+  --radius-small: 6px;
+  --radius-medium: 16px;
+  --radius-large: 32px;
+  --radius-extra-large: 40px;
+}
+
+/* ---------- Semantic layer ---------- */
+:root {
+  /* Colour: surfaces and non-text are site-owned, the system defines no
+     background, border or control token. */
   --color-bg: #ffffff;
-  --color-text: #111111;       /* 18.9:1 on bg */
-  --color-muted: #565656;      /* 7.3:1  on bg, AAA for 13-14px text */
-  --color-border: #e5e5e5;     /* decorative rules only, carries no meaning */
-  --color-control: #8f8f8f;    /* 3.2:1  on bg, boundary of an interactive control */
   --color-surface: #f1f1f2;
+  --color-border: #e5e5e5;     /* decorative rules only, carries no meaning */
+  --color-control: #8f8f8f;    /* 3.2:1 on bg, boundary of an interactive control */
+
+  --color-title: var(--type-light-titles);   /* 21:1   on bg */
+  --color-text: var(--type-light-body);      /* 10.9:1 on bg */
+  --color-muted: #565656;      /* 7.3:1 on bg, AAA for 13-14px text */
+  --color-link: var(--type-light-link);      /* 8.3:1  on bg */
+  --color-visited: var(--type-light-visited);/* 8.4:1  on bg */
+  --color-accent: var(--brand-accent);       /* 10.8:1 on bg */
 
   /* Type */
-  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-sans: "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Helvetica, Arial, sans-serif;
 
   --text-xs: 0.8125rem;   /* 13px  copyright */
   --text-sm: 0.875rem;    /* 14px  location */
@@ -21,49 +90,60 @@
   --leading-tight: 1.25;
   --leading-body: 1.5;
 
+  --weight-light: 300;
   --weight-regular: 400;
+  --weight-medium: 500;
   --weight-bold: 700;
+  --weight-heavy: 800;
+  --weight-black: 900;
 
-  /* Spacing */
-  --space-1: 0.5rem;      /* 8  */
-  --space-2: 0.625rem;    /* 10 */
-  --space-3: 1rem;        /* 16 */
-  --space-4: 1.5rem;      /* 24 */
-  --space-5: 2rem;        /* 32 */
-  --space-6: 2.5rem;      /* 40 */
-  --space-7: 3.5rem;      /* 56 */
-  --space-8: 4rem;        /* 64 */
-  --space-9: 5.5rem;      /* 88 */
-  --space-10: 6rem;       /* 96 */
-  --space-11: 7.5rem;     /* 120 */
+  /* Spacing, mapped onto the 8px grid. --space-2 was 10px and is now 8px;
+     --space-9/10/11 have no single token and are composed from the scale. */
+  --space-1: var(--base-1);     /* 8   */
+  --space-2: var(--base-1);     /* 8   was 10 */
+  --space-3: var(--base-x2);    /* 16  */
+  --space-4: var(--base-x3);    /* 24  */
+  --space-5: var(--base-x4);    /* 32  */
+  --space-6: var(--base-x5);    /* 40  */
+  --space-7: var(--base-x7);    /* 56  */
+  --space-8: var(--base-x8);    /* 64  */
+  --space-9: calc(var(--base-x8) + var(--base-x3));   /* 88  */
+  --space-10: calc(var(--base-x8) + var(--base-x4));  /* 96  */
+  --space-11: calc(var(--base-x8) + var(--base-x7));  /* 120 */
 
   /* Layout */
   --measure: 700px;       /* text column */
   --media-width: 1000px;  /* hero block at desktop */
-  --gutter: 1.5rem;       /* 24 mobile */
-  --gutter-md: 4rem;      /* 64 tablet */
-  --edge-inset: 1.5rem;   /* menu button inset from viewport edge */
-  --control-size: 3.5rem; /* 56 */
-  --icon-size: 1.5rem;    /* 24 default glyph box */
-  --target-size: 2.75rem; /* 44 minimum touch target */
+  --gutter: var(--base-x3);     /* 24 mobile */
+  --gutter-md: var(--base-x8);  /* 64 tablet */
+  --edge-inset: var(--base-x3); /* menu button inset from viewport edge */
+  --control-size: var(--base-x7);  /* 56 */
+  --icon-size: var(--base-x3);     /* 24 default glyph box */
+  --target-size: 2.75rem;          /* 44 minimum touch target, WCAG floor */
   --hero-ratio: 3 / 2;
-  --hero-inset: 1rem;     /* 16 bleed inset below desktop */
-  --radius-lg: 1.875rem;  /* 30 */
+  --hero-inset: var(--base-x2);    /* 16 bleed inset below desktop */
+  --radius-lg: var(--radius-large);/* 32, was 30 */
 
   /* Motion */
   --ease: cubic-bezier(0.2, 0, 0, 1);
   --duration: 160ms;
 }
 
-/* Dark palette, driven by the OS setting. Only colour tokens change. */
+/* Dark palette, driven by the OS setting. Site-owned: the design system has
+   no dark theme yet. Only the semantic colour layer changes. */
 @media (prefers-color-scheme: dark) {
   :root {
     --color-bg: #0e0e0f;
-    --color-text: #f2f2f2;     /* 17.2:1 on bg */
-    --color-muted: #a3a3a6;    /* 7.6:1  on bg, AAA for 13-14px text */
-    --color-border: #2e2e31;   /* decorative rules only */
-    --color-control: #626266;  /* 3.3:1  on bg */
     --color-surface: #1b1b1d;
+    --color-border: #2e2e31;   /* decorative rules only */
+    --color-control: #626266;  /* 3.3:1 on bg */
+
+    --color-title: #ffffff;    /* 19.3:1 on bg */
+    --color-text: #e4e4e6;     /* 15.0:1 on bg */
+    --color-muted: #a3a3a6;    /* 7.6:1  on bg, AAA for 13-14px text */
+    --color-link: #7d90ff;     /* 6.7:1  on bg, lifted from --type-light-link */
+    --color-visited: #d19bf0;  /* 8.9:1  on bg, lifted from --type-light-visited */
+    --color-accent: #9db4f2;   /* 9.4:1  on bg, lifted from --brand-accent */
   }
 }
 
@@ -71,6 +151,6 @@
   :root {
     --text-base: 1.125rem; /* 18px */
     --gutter: var(--gutter-md);
-    --edge-inset: 2rem;
+    --edge-inset: var(--base-x4); /* 32 */
   }
 }

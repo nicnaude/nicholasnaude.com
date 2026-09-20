@@ -89,7 +89,7 @@
   padding-block: var(--space-6);
   border-top: 1px solid var(--color-border);
   border-bottom: 1px solid var(--color-border);
-  color: var(--color-text);
+  color: var(--color-title);
   text-decoration: none;
 }
 
@@ -126,6 +126,7 @@
 
 .contact-links a {
   font-size: var(--text-link);
+  color: var(--color-link);
   /* Dotted has less ink than solid, so it is drawn at full text colour
      to keep the link affordance above the 3:1 non-text contrast floor. */
   text-decoration: underline dotted;
@@ -133,6 +134,10 @@
   text-underline-offset: 4px;
   text-decoration-color: currentColor;
   transition: text-decoration-style var(--duration) var(--ease);
+}
+
+.contact-links a:visited {
+  color: var(--color-visited);
 }
 
 .contact-links a:hover,
