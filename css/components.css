@@ -10,15 +10,9 @@
   gap: var(--space-1);
 }
 
-/* The wordmark is the one place Fira Sans is used. `line-height: normal`
-   is Figma's Auto: the face's own metrics rather than the tight ratio
-   base.css gives the other headings. */
 .logo {
-  font-family: var(--font-wordmark);
-  font-size: var(--text-wordmark);   /* 28 */
-  font-weight: var(--weight-semibold);
-  line-height: normal;
-  letter-spacing: -0.01em;           /* -1% */
+  font-size: var(--text-lg);
+  font-weight: var(--weight-regular);
 }
 
 .title {
