@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Batch It Privacy Policy</title>
+<style>
+  body { font: 17px/1.6 -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif; color: #1d1d1f; max-width: 720px; margin: 48px auto; padding: 0 24px; }
+  h1 { font-size: 32px; margin-bottom: 4px; }
+  h2 { font-size: 22px; margin-top: 40px; }
+  .updated { color: #6e6e73; margin-top: 0; }
+  ol, ul { padding-left: 24px; }
+  li { margin-bottom: 8px; }
+  @media (prefers-color-scheme: dark) { body { background: #000; color: #f5f5f7; } .updated { color: #a1a1a6; } }
+</style>
+</head>
+<body>
+<h1>Batch It Privacy Policy</h1>
+<p class="updated">Last updated: 10 October 2026</p>
+
+<p>Batch It is a macOS app with a Safari web extension that finds the photos and videos on the page you are viewing and saves the ones you choose to your Downloads folder. It is made by Nicholas Naude.</p>
+
+<p>The short version: Batch It collects no data about you. It has no servers, no accounts, no analytics, and no third-party code. Everything it does happens on your Mac, and the only network traffic it creates goes directly from your Mac to the websites that host the media you are looking at.</p>
+
+<h2>What Batch It does not do</h2>
+<ul>
+  <li>It does not collect, store, or transmit personal information.</li>
+  <li>It does not collect browsing history, page content, or the media it finds.</li>
+  <li>It does not use analytics, crash reporting, advertising, or tracking of any kind.</li>
+  <li>It does not operate any server and never sends anything to the developer.</li>
+  <li>It does not share anything with third parties.</li>
+  <li>It does not require an account or sign-in.</li>
+</ul>
+<p>The App Store privacy label for Batch It is "Data Not Collected".</p>
+
+<h2>When the extension can see a web page</h2>
+<p>The extension uses Safari's activeTab permission. It has no access to any website until you click the Batch It button in the Safari toolbar. Safari asks you to allow access to that site the first time, and you can change that choice at any time in Safari Settings under Websites.</p>
+<p>When you click the button, the extension runs a small script on the current page only. The script looks for image and video elements, picture sources, links to media files, and CSS background images, and collects their web addresses along with their dimensions and, where the page already knows it, their file size. It does not read the text of the page, form fields, cookies, or anything you type. The results exist only in the popup window and are discarded when it closes. Nothing is scanned in the background or on pages where you have not clicked the button.</p>
+
+<h2>Network requests the extension makes</h2>
+<p>All requests go straight from your Mac to the website that hosts the media. No request passes through any service run by the developer. Three kinds of request are made:</p>
+<ol>
+  <li><strong>Checking each item.</strong> As soon as the popup lists the media it found, it asks the hosting server for the first byte of each file. This is how it learns the file size and whether the file can actually be downloaded, so it can grey out items that will not work. These requests happen even if you download nothing.</li>
+  <li><strong>Video previews.</strong> For videos, the extension fetches enough of the file to decode a single poster frame, which is shown as the thumbnail in the popup.</li>
+  <li><strong>Downloads.</strong> When you click a download button, the extension fetches the selected files and saves them to your Downloads folder.</li>
+</ol>
+<p>Each of these requests includes the address of the page you were viewing as the Referer header, because many sites refuse to serve media without it, and a standard Safari-style User-Agent header. Beyond that, the requests carry no identifying information. The websites you fetch media from will see these requests the same way they would see your browser loading the page, and their own privacy policies govern what they do with that.</p>
+
+<h2>What is stored on your Mac</h2>
+<ul>
+  <li><strong>Downloaded files</strong> are saved to your Downloads folder with their original file names. You control them from there.</li>
+  <li><strong>One preference flag</strong> is kept in the extension's local storage. It holds no personal information.</li>
+  <li><strong>Short diagnostic notes</strong> may be written to the macOS system log if a scan fails, for example "scan returned 0 items". These notes never include web addresses or page content, stay on your Mac, and are managed by macOS like any other app log.</li>
+</ul>
+<p>Nothing else is written anywhere. The companion app's window exists only to open Safari's extension settings and stores nothing.</p>
+
+<h2>Permissions and sandboxing</h2>
+<p>Both the app and the extension run inside the macOS App Sandbox. The extension has exactly three capabilities beyond the sandbox default:</p>
+<ul>
+  <li><strong>Outgoing network connections</strong>, used only for the media requests described above.</li>
+  <li><strong>Read and write access to your Downloads folder</strong>, used only to save the files you ask for and to reveal them in Finder.</li>
+  <li><strong>Safari web extension permissions</strong> for activeTab, scripting, storage, and native messaging, which let the popup scan the page you clicked on, keep its single preference, and hand download requests to the sandboxed native component.</li>
+</ul>
+
+<h2>Children</h2>
+<p>Batch It is a general-purpose utility, is not directed at children, and collects no information from anyone.</p>
+
+<h2>Changes to this policy</h2>
+<p>If a future version of Batch It changes what it does with data, this policy will be updated and the date at the top revised. Because the app does not collect anything, there is nothing to migrate or delete when the policy changes.</p>
+
+<h2>Contact</h2>
+<p>Questions about this policy can be sent to Nicholas Naude at <a href="mailto:REPLACE@EXAMPLE.COM">REPLACE WITH SUPPORT EMAIL</a>.</p>
+</body>
+</html>
