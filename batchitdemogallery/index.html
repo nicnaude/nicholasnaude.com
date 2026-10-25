@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Batch It Gallery</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f4eee5;
+    --ink: #2a2622;
+    --muted: #8a8177;
+    --tile: #e7dfd2;
+    --line: rgba(42, 38, 34, 0.08);
+    --radius: 18px;
+    --gap: 16px;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+  }
+
+  /* Nav */
+  nav {
+    position: sticky; top: 0; z-index: 10;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px clamp(20px, 5vw, 64px);
+    background: rgba(244, 238, 229, 0.8);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 1px solid var(--line);
+  }
+  .logo { font-family: "Fraunces", Georgia, serif; font-size: 22px; letter-spacing: -0.01em; color: var(--ink); text-decoration: none; }
+  .logo span { color: var(--muted); }
+  nav ul { display: flex; gap: 28px; list-style: none; padding: 0; }
+  nav a.link { color: var(--muted); text-decoration: none; font-size: 14px; transition: color .2s; }
+  nav a.link:hover { color: var(--ink); }
+
+  /* Hero */
+  header.hero { max-width: 1200px; margin: 0 auto; padding: clamp(28px, 4vw, 48px) clamp(20px, 5vw, 64px) 0; }
+  .eyebrow { font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+  h1 { font-family: "Fraunces", Georgia, serif; font-weight: 400; font-size: clamp(32px, 4.4vw, 52px); line-height: 1.02; letter-spacing: -0.025em; margin-top: 10px; }
+  .hero p { margin-top: 10px; max-width: 52ch; color: var(--muted); font-size: 15px; }
+
+  /* Sections */
+  main { max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 64px) 72px; }
+  .section-head { display: flex; align-items: baseline; justify-content: space-between; margin: 32px 0 20px; }
+  h2 { font-family: "Fraunces", Georgia, serif; font-weight: 400; font-size: clamp(26px, 3vw, 34px); letter-spacing: -0.01em; }
+  .count { color: var(--muted); font-size: 14px; }
+
+  figure { margin: 0; position: relative; border-radius: var(--radius); overflow: hidden; background: var(--tile); box-shadow: 0 1px 0 var(--line); }
+  figure img, figure video { display: block; width: 100%; height: 100%; object-fit: cover; }
+  figcaption {
+    position: absolute; left: 0; right: 0; bottom: 0;
+    padding: 28px 18px 14px; font-size: 13px; color: #fff;
+    background: linear-gradient(to top, rgba(30, 26, 22, 0.45), transparent);
+    opacity: 0; transition: opacity .3s; pointer-events: none;
+  }
+
+  /* Gallery: justified rows, every photo shown uncropped, edges flush */
+  .row { display: flex; gap: var(--gap); margin-bottom: var(--gap); }
+  .row figure { flex: var(--r) 1 0; aspect-ratio: var(--r); min-width: 0; }
+  .row figure img { transition: transform .6s cubic-bezier(.2, .7, .2, 1); }
+  .row figure:hover img { transform: scale(1.03); }
+  .row figure:hover figcaption { opacity: 1; }
+
+  /* Feature: one tall hero, two rows beside it */
+  .feature { display: flex; gap: var(--gap); align-items: stretch; }
+  .feature .hero-img { flex: 0 0 41%; aspect-ratio: 2 / 3; }
+  .feature .stack { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: var(--gap); }
+  .feature .row { flex: 1 1 0; min-height: 0; margin-bottom: 0; }
+  .feature .row figure { aspect-ratio: auto; height: 100%; }
+  .hero-img img { transition: transform .6s cubic-bezier(.2, .7, .2, 1); }
+  .hero-img:hover img { transform: scale(1.03); }
+  .hero-img:hover figcaption { opacity: 1; }
+
+  /* Films */
+  .films { display: flex; gap: var(--gap); align-items: stretch; }
+  .films figure { flex: 1 1 0; min-width: 0; aspect-ratio: 9 / 16; background: #1f1b17; }
+  .note {
+    flex: 1 1 0; min-width: 0; border-radius: var(--radius); background: var(--tile);
+    display: flex; flex-direction: column; justify-content: flex-end; padding: 28px;
+  }
+  .note h3 { font-family: "Fraunces", Georgia, serif; font-weight: 400; font-size: clamp(24px, 3vw, 34px); letter-spacing: -0.01em; line-height: 1.1; }
+  .note p { margin-top: 10px; color: var(--muted); font-size: 15px; max-width: 30ch; }
+
+  footer {
+    max-width: 1200px; margin: 0 auto; padding: 32px clamp(20px, 5vw, 64px) 56px;
+    border-top: 1px solid var(--line);
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+    color: var(--muted); font-size: 13px;
+  }
+
+  @media (max-width: 700px) {
+    nav ul { display: none; }
+    .feature, .feature .stack { flex-direction: column; }
+    .feature .hero-img { flex: none; width: 100%; }
+    .feature .row { flex: none; flex-direction: column; }
+    .feature .row figure { flex: none; width: 100%; height: auto; aspect-ratio: var(--r); }
+    .films { flex-wrap: wrap; }
+    .films { flex-direction: column; }
+    .films figure { flex: none; width: 100%; }
+    .note { flex: 1 1 100%; min-height: 160px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="#top">The Batch It Gallery</a>
+  <ul>
+    <li><a class="link" href="#gallery">Gallery</a></li>
+    <li><a class="link" href="#films">Films</a></li>
+    <li><a class="link" href="#about">About</a></li>
+  </ul>
+</nav>
+
+<header class="hero" id="top">
+  <div class="eyebrow">Free to download and use</div>
+  <h1>Take what you like.</h1>
+  <p>Every photograph and film in this collection is free to download and use, for personal or commercial projects. No sign up, no strings.</p>
+</header>
+
+<main>
+
+  <div class="section-head" id="gallery">
+    <h2>Gallery</h2>
+    <span class="count">6 photographs</span>
+  </div>
+
+  <div class="feature">
+    <figure class="hero-img" style="--r:0.6667"><img src="images/photo-01.jpg" alt="Parasol against the sky"><figcaption>Parasol</figcaption></figure>
+    <div class="stack">
+      <div class="row">
+        <figure style="--r:0.6667"><img src="images/photo-02.jpg" alt="Dune shadow" loading="lazy"><figcaption>Dune Shadow</figcaption></figure>
+        <figure style="--r:0.4604"><img src="images/photo-03.jpg" alt="Evening balloon" loading="lazy"><figcaption>Evening Balloon</figcaption></figure>
+        <figure style="--r:0.6957"><img src="images/photo-04.jpg" alt="Soft sculptural forms" loading="lazy"><figcaption>Soft Form</figcaption></figure>
+      </div>
+      <div class="row">
+        <figure style="--r:0.75"><img src="images/photo-05.jpg" alt="Plaster wall and sky" loading="lazy"><figcaption>Plaster and Sky</figcaption></figure>
+        <figure style="--r:1"><img src="images/photo-06.jpg" alt="Palm bloom" loading="lazy"><figcaption>Palm Bloom</figcaption></figure>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-head" id="films">
+    <h2>Films</h2>
+    <span class="count">3 short films</span>
+  </div>
+
+  <div class="films">
+    <figure><video src="videos/film-01.mp4" poster="videos/poster-01.jpg" controls playsinline preload="metadata"></video></figure>
+    <figure><video src="videos/film-02.mp4" poster="videos/poster-02.jpg" controls playsinline preload="metadata"></video></figure>
+    <figure><video src="videos/film-03.mp4" poster="videos/poster-03.jpg" controls playsinline preload="metadata"></video></figure>
+  </div>
+
+</main>
+
+<footer id="about">
+  <span>The Batch It Gallery. Everything here is free to download and use.</span>
+  <span>A demo collection for Batch It.</span>
+</footer>
+
+</body>
+</html>
